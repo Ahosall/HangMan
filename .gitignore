@@ -1,0 +1,27 @@
+# Directórios e arquivos do IntelliJ IDEA
+.idea/
+*.iml
+
+# Diretórios e arquivos do Eclipse
+.classpath
+.project
+.settings/
+bin/
+target/
+*.jar
+*.war
+
+# Diretórios de compilação e bibliotecas
+out/
+build/
+*.class
+
+# Diretórios de dependências
+lib/
+lib/*
+
+# Outros arquivos que não devem ser rastreados
+*.log
+*.tmp
+*.bak
+*.swp
