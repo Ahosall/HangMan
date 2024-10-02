@@ -1,6 +1,7 @@
 package xyz.ahosall.hangman;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 import xyz.ahosall.hangman.structures.RandomWord;
@@ -17,11 +18,14 @@ public class App {
         HashMap<String, String> result = new HashMap<>();
 
         try {
-            RandomWord randomWord = api.getData("/random", RandomWord.class);
-            Word word = api.getData("/word/" + randomWord.word, Word.class);
+            RandomWord randomWord = api.getRandomWord();
 
-            result.put("word", word.word);
-            result.put("meaning", xmlProcessor.processXml(word.xml, "def"));
+            List<Word> defs = api.getDefinitionWord(randomWord.word);
+            Word def = defs.get(0);
+            String meaning = xmlProcessor.processXml(def.xml, "def").split("\n")[1];
+
+            result.put("word", def.word);
+            result.put("meaning", meaning);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -52,7 +56,7 @@ public class App {
         char[] guessWord = wordValue.replaceAll("[a-z]", "_").toCharArray();
 
         while (points > 0) {
-            System.out.println(word.get("meaning"));
+            System.out.println("\nDica: " + word.get("meaning"));
             System.out.println(gibbetArt(points));
             System.out.println("|  " + new String(guessWord).toUpperCase());
 
