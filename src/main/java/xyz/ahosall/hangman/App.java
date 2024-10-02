@@ -10,7 +10,6 @@ import xyz.ahosall.hangman.utils.Api;
 import xyz.ahosall.hangman.utils.XmlProcessor;
 
 public class App {
-
     static HashMap<String, String> getWord() {
         Api api = new Api();
         XmlProcessor xmlProcessor = new XmlProcessor();
@@ -53,7 +52,7 @@ public class App {
         HashMap<String, String> word = getWord();
 
         String wordValue = word.get("word");
-        char[] guessWord = wordValue.replaceAll("[a-z]", "_").toCharArray();
+        char[] guessWord = wordValue.replaceAll("[^ ]", "_").toCharArray();
 
         while (points > 0) {
             System.out.println("\nDica: " + word.get("meaning"));
