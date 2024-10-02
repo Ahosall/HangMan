@@ -61,12 +61,12 @@
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
           <configuration>
-                <archive>
-                    <manifest>
-                        <mainClass>xyz.ahosall.hangman.Main</mainClass>
-                    </manifest>
-                </archive>
-            </configuration>
+            <archive>
+              <manifest>
+                <mainClass>xyz.ahosall.hangman.App</mainClass>
+              </manifest>
+            </archive>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
@@ -86,7 +86,21 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>3.2.4</version>
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals>
+                <goal>shade</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
+
     </pluginManagement>
   </build>
 </project>
