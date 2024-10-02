@@ -35,5 +35,5 @@ mvn clean package
 And finally, just execute.
 
 ```shell
-java -jar target/hangman-<version>.jar # Insert the version that is in pom.xml:10
+java -jar target/hangman-<version>.jar # Insert the version that is in pom.xml:9
 ```
